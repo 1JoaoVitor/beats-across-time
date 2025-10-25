@@ -11,8 +11,37 @@ config_version=5
 [application]
 
 config/name="Beats Across Time"
+run/main_scene="uid://cvvf4fjt8khug"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://assets/sprites/icon.svg"
+
+[autoload]
+
+GameManager="*res://main_scenes/game_manager.gd"
+SceneManager="*res://main_scenes/scene_manager.tscn"
+Conductor="*res://audio/conductor.tscn"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
+window/stretch/mode="canvas_items"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "blue",
+"res://audio/": "yellow",
+"res://boss/": "red",
+"res://main_scenes/": "teal",
+"res://player/": "purple",
+"res://world/": "green"
+}
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
 
 [rendering]
 
