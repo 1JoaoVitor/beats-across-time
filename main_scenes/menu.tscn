@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://lo2gkq41mho5"]
+
+[ext_resource type="Script" uid="uid://bxounjagt73t2" path="res://main_scenes/menu.gd" id="1_38vls"]
+
+[node name="Menu" type="Node"]
+script = ExtResource("1_38vls")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -329.0
+offset_top = -93.0
+offset_right = 329.0
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Beats Across Time"
+
+[node name="RhythmTestButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "rythm test"
+
+[connection signal="pressed" from="VBoxContainer/RhythmTestButton" to="." method="_on_rhythm_test_button_pressed"]
