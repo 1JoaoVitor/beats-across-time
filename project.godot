@@ -20,6 +20,7 @@ config/icon="res://assets/sprites/icon.svg"
 GameManager="*res://main_scenes/game_manager.gd"
 SceneManager="*res://main_scenes/scene_manager.tscn"
 Conductor="*res://audio/conductor.tscn"
+SongDB="*res://audio/songs/song_db.gd"
 
 [display]
 

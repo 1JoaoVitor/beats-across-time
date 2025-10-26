@@ -1,0 +1,10 @@
+extends Resource
+class_name SongData
+
+## O arquivo de áudio (ex: .ogg ou .mp3)
+@export var audio_stream: AudioStream
+@export var name: String = "Untitled"
+
+@export var bpm: int = 60
+@export var measures: int = 4  # Para compasso 4/4
+@export var initial_offset: float = 0.0 # Atraso inicial em segundos antes do primeiro beat
