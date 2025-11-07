@@ -1,11 +1,13 @@
 extends AudioStreamPlayer
 
-class BeatInfo:
-	var pos: int = 0 # The position of the beat ex: 0, 1, 2, 3...
-	var time: float = 0.0 # In seconds
-
 signal beat_hit(beat: BeatInfo, measure_pos: int)
 signal song_started
+
+class BeatInfo:
+	var pos: int = 0 ## The position of the beat ex: 0, 1, 2, 3...
+	var time: float = 0.0 ## In seconds
+
+const TURN_DELAY_SEC: float = Settings.TURN_DELAY_SEC
 
 var current_song: SongData = null
 var bpm: int = 0 ## Beats per minute
@@ -19,6 +21,9 @@ var last_beat: BeatInfo = BeatInfo.new()
 var next_beat: BeatInfo = BeatInfo.new()
 var _measure_pos: int = 0
 
+var _is_awaiting_turn_delay: bool = false
+var _delayed_emit_time: float
+
 
 func _process(_delta: float) -> void:
 	if not playing:
@@ -28,6 +33,7 @@ func _process(_delta: float) -> void:
 	time -= AudioServer.get_output_latency()
 	time -= initial_offset
 	song_time = max(song_time, time)
+	
 	_song_beat_pos = floori(song_time / spb) + 1
 	if _song_beat_pos >= next_beat.pos: # Trigger beat
 		last_beat.pos = next_beat.pos
@@ -35,6 +41,12 @@ func _process(_delta: float) -> void:
 		next_beat.pos += 1
 		next_beat.time = (next_beat.pos - 1) * spb
 		_measure_pos = 1 if _measure_pos >= measure else _measure_pos + 1
+		
+		_is_awaiting_turn_delay = true
+		_delayed_emit_time = last_beat.time + TURN_DELAY_SEC
+	
+	if _is_awaiting_turn_delay and song_time >= _delayed_emit_time:
+		_is_awaiting_turn_delay = false
 		self.beat_hit.emit(last_beat, _measure_pos)
 
 
