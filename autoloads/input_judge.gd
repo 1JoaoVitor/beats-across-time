@@ -8,7 +8,8 @@ enum Judgment {
 	HIT
 }
 
-const HIT_WINDOW = 0.08 ## In seconds, equals 80ms
+const HIT_WINDOW_EARLY_SEC: float = Settings.HIT_WINDOW_EARLY_SEC
+const HIT_WINDOW_LATE_SEC: float = Settings.HIT_WINDOW_LATE_SEC
 
 var _last_judged_beat_pos: int = -1
 
@@ -21,6 +22,9 @@ func _on_song_started() -> void:
 	_last_judged_beat_pos = -1
 
 func _input(event: InputEvent) -> void:
+	if not Conductor.playing:
+		return
+	
 	var action_pressed: StringName
 	
 	if event.is_action_pressed("up"):
@@ -53,9 +57,11 @@ func _input(event: InputEvent) -> void:
 	
 	_last_judged_beat_pos = target_beat.pos
 	
-	var error = abs(input_time - target_beat.time)
+	var error_sec: float = input_time - target_beat.time
 	
-	if error <= HIT_WINDOW:
-		self.action_judged.emit(action_pressed, Judgment.HIT, int(error * 1000))
+	if error_sec >= -HIT_WINDOW_EARLY_SEC and error_sec <= HIT_WINDOW_LATE_SEC:
+		var error_ms = int(error_sec * 1000)
+		self.action_judged.emit(action_pressed, Judgment.HIT, error_ms)
 	else:
-		self.action_judged.emit(action_pressed, Judgment.MISS, int(error * 1000))
+		var error_ms = int(error_sec * 1000)
+		self.action_judged.emit(action_pressed, Judgment.MISS, error_ms)
