@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bi3r8ujd1ruca"]
 
 [ext_resource type="Texture2D" uid="uid://be0wbtbc7sdu7" path="res://assets/placeholder/player_art.png" id="1_oul6g"]
-[ext_resource type="Script" uid="uid://cfx45884gp5ql" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="Script" uid="uid://cfx45884gp5ql" path="res://entities/player/player.gd" id="1_rkbax"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rkbax"]
 animations = [{
@@ -25,6 +25,8 @@ up = NodePath("Up")
 down = NodePath("Down")
 left = NodePath("Left")
 right = NodePath("Right")
+is_hittable = true
+occupies_tile = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

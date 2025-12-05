@@ -36,11 +36,12 @@ window/vsync/vsync_mode=0
 
 folder_colors={
 "res://assets/": "blue",
-"res://audio/": "yellow",
+"res://audio/": "purple",
 "res://autoloads/": "pink",
-"res://boss/": "red",
+"res://entities/": "orange",
+"res://entities/boss/": "red",
+"res://entities/player/": "yellow",
 "res://main_scenes/": "teal",
-"res://player/": "purple",
 "res://world/": "green"
 }
 

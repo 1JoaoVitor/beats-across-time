@@ -1,4 +1,4 @@
-extends Node2D
+extends GridEntity
 class_name Player
 
 @export var sprite: AnimatedSprite2D
@@ -9,12 +9,14 @@ class_name Player
 
 var buffered_action: StringName
 
+
 # TODO: move this constant to an apropriate place (like a tile map or GameManager)
 # tem algum bug em relação ao player ter scale 3x?
 const TILE_SIZE := Vector2(16, 16)*3
 var sprite_tween: Tween
 
 func _ready() -> void:
+	super()
 	Conductor.beat_hit.connect(_on_beat_hit)
 	InputJudge.action_judged.connect(_on_action_judged)
 
