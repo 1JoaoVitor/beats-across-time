@@ -17,10 +17,11 @@ config/icon="res://assets/sprites/icon.svg"
 
 [autoload]
 
+Settings="*res://autoloads/settings.gd"
+SongDB="*res://autoloads/song_db.gd"
 GameManager="*res://autoloads/game_manager.gd"
 SceneManager="*res://autoloads/scene_manager.tscn"
 Conductor="*res://autoloads/conductor.tscn"
-SongDB="*res://autoloads/song_db.gd"
 InputJudge="*res://autoloads/input_judge.gd"
 
 [display]
@@ -29,16 +30,18 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
 window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
 
 [file_customization]
 
 folder_colors={
 "res://assets/": "blue",
-"res://audio/": "yellow",
+"res://audio/": "purple",
 "res://autoloads/": "pink",
-"res://boss/": "red",
+"res://entities/": "orange",
+"res://entities/boss/": "red",
+"res://entities/player/": "yellow",
 "res://main_scenes/": "teal",
-"res://player/": "purple",
 "res://world/": "green"
 }
 

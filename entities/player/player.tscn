@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi3r8ujd1ruca"]
+
+[ext_resource type="Texture2D" uid="uid://be0wbtbc7sdu7" path="res://assets/placeholder/player_art.png" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://cfx45884gp5ql" path="res://entities/player/player.gd" id="1_rkbax"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rkbax"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_oul6g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="Node2D" node_paths=PackedStringArray("sprite")]
+scale = Vector2(3, 3)
+script = ExtResource("1_rkbax")
+sprite = NodePath("AnimatedSprite2D")
+is_hittable = true
+occupies_tile = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_rkbax")
