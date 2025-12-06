@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 @onready var song_time_label: Label = $VBoxContainer/SongTimeLabel
 @onready var label: Label = $VBoxContainer/Label

@@ -27,6 +27,6 @@ text = "Beats Across Time"
 [node name="RhythmTestButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "rythm test"
+text = "game test"
 
 [connection signal="pressed" from="VBoxContainer/RhythmTestButton" to="." method="_on_rhythm_test_button_pressed"]

@@ -2,12 +2,12 @@ extends Node
 
 enum MainScene {
 	MENU,
-	RHYTHM_TEST,
+	GAME_TEST,
 }
 
 const MAIN_SCENES_UIDS: Dictionary = {
 	MainScene.MENU: "uid://lo2gkq41mho5",
-	MainScene.RHYTHM_TEST: "uid://b2xko7dyhrx7s"
+	MainScene.GAME_TEST: "uid://cebb54jsd0lk8"
 }
 
 
