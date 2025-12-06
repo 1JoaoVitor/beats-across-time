@@ -45,6 +45,11 @@ folder_colors={
 "res://world/": "green"
 }
 
+[global_group]
+
+player=""
+enemy=""
+
 [gui]
 
 theme/default_font_multichannel_signed_distance_field=true

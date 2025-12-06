@@ -23,12 +23,32 @@ color = Color(0, 0, 0, 0)
 
 [node name="Player" parent="." index="2"]
 position = Vector2(961, 673)
+is_immobile = null
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." index="3"]
-offset_right = 636.0
-offset_bottom = 536.0
+[node name="debug" type="Control" parent="." index="3"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 528.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="SongTimeLabel" type="Label" parent="VBoxContainer" index="0"]
+[node name="HBoxContainer" type="HBoxContainer" parent="debug" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="debug/HBoxContainer" index="0"]
+custom_minimum_size = Vector2(686, 0)
+layout_mode = 2
+
+[node name="SongTimeLabel" type="Label" parent="debug/HBoxContainer/VBoxContainer" index="0"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -37,7 +57,7 @@ theme_override_font_sizes/font_size = 75
 text = "song_time = 0.0"
 horizontal_alignment = 2
 
-[node name="Label" type="Label" parent="VBoxContainer" index="1"]
+[node name="Label" type="Label" parent="debug/HBoxContainer/VBoxContainer" index="1"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -48,7 +68,7 @@ last_beat_pos = -1
 measure_pos = 0"
 horizontal_alignment = 2
 
-[node name="ErrorLabel" type="Label" parent="VBoxContainer" index="2"]
+[node name="ErrorLabel" type="Label" parent="debug/HBoxContainer/VBoxContainer" index="2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -56,3 +76,19 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 75
 text = "error_ms = 0"
 horizontal_alignment = 2
+
+[node name="VSeparator" type="VSeparator" parent="debug/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="debug/HBoxContainer" index="2"]
+custom_minimum_size = Vector2(686, 0)
+layout_mode = 2
+
+[node name="PlayerHP" type="Label" parent="debug/HBoxContainer/VBoxContainer2" index="0"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 75
+text = "PlayerHP = 5/5"
