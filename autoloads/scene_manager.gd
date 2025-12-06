@@ -15,7 +15,6 @@ func _ready() -> void:
 	# ATTENTION: call_deferred is necessary to load the initial scene safely only after the bootloader scene has been properly initialized.
 	# INFO: Change the initial scene here    vvv
 	self.call_deferred("change_scene_to", MainScene.MENU)
-	print(get_tree().current_scene)
 
 
 func change_scene_to(next_scene: MainScene) -> void:

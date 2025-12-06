@@ -23,11 +23,7 @@ func _process(delta: float) -> void:
 	song_time_label.text = "song_time = %.3f" % Conductor.song_time
 
 func _on_beat_hit(beat: Conductor.BeatInfo, measure_pos) -> void:
-	label.text = "turn time = %.3f\nlast_beat.pos = %d\nmeasure_pos = %d" % [
-	Conductor.song_time,
-	beat.pos,
-	measure_pos
-]
+	label.text = "turn time = %.3f\nlast_beat.pos = %d\nmeasure_pos = %d" % [ Conductor.song_time, beat.pos, measure_pos ]
 
 func _on_action_judged(action: StringName, judgement: InputJudge.Judgment, error_ms: int) -> void:
 	if action == &"up" or action == &"down" or action == &"left" or action == &"right" or action == &"space":

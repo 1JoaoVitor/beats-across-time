@@ -31,8 +31,6 @@ func _on_beat_hit(beat: Conductor.BeatInfo, measure: int) -> void:
 		var target_grid_pos: Vector2i = self.grid_pos + ACTIONS_VECTOR[buffered_action]
 		if grid.is_tile_walkable(target_grid_pos) and not grid.is_tile_occupied(target_grid_pos):
 			self.move_to(target_grid_pos)
-			# DEBUG TEMPORARIO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			print("global position: " + str(self.global_position))
 	buffered_action = &""
 
 
