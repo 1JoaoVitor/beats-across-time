@@ -28,9 +28,8 @@ func _ready() -> void:
 	grid.register_entity(self, grid_pos)
 
 
-## Função para mover a entidade logicamente e visualmente
 ## Moves the entity logically and visually
-## Does not check
+## Does not check for entities occupying the target position
 func move_to(target_grid_pos: Vector2i) -> void:
 	if is_immobile:
 		return
