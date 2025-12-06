@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://lo2gkq41mho5"]
+[gd_scene load_steps=3 format=3 uid="uid://lo2gkq41mho5"]
 
 [ext_resource type="Script" uid="uid://bxounjagt73t2" path="res://main_scenes/menu.gd" id="1_38vls"]
+[ext_resource type="FontFile" uid="uid://dworrnp8lpw41" path="res://assets/fonts/NewRocker-Regular.ttf" id="2_1xsbm"]
 
 [node name="Menu" type="Node"]
 script = ExtResource("1_38vls")
@@ -21,11 +22,14 @@ mouse_filter = 2
 
 [node name="TitleLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 75
+theme_override_fonts/font = ExtResource("2_1xsbm")
+theme_override_font_sizes/font_size = 100
 text = "Beats Across Time"
+horizontal_alignment = 1
 
 [node name="RhythmTestButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1xsbm")
 theme_override_font_sizes/font_size = 50
 text = "game test"
 

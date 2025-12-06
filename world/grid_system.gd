@@ -28,7 +28,7 @@ func unregister_entity(entity: GridEntity, coords: Vector2i) -> void:
 
 ## Por questões de perfomance, a declaração do array foi movido pra fora do escopo da função
 const empty_array: Array[GridEntity] = []
-## Returns an Array with all GridEntities on the tile (or null if empty)
+## Returns an Array with all GridEntities on the tile (can be empty)
 func get_entities_at(coords: Vector2i) -> Array[GridEntity]:
 	return _grid_entities.get(coords, empty_array)
 
@@ -55,3 +55,11 @@ func is_tile_walkable(coords: Vector2i) -> bool:
 		return false # Tile is empty
 	# Checks a custom data layer from the TileSet
 	return tile_data.get_custom_data("is_walkable")
+
+
+## Returns the first hittable entity found at the given tile coordinates
+func get_first_hittable_entity_at(coords: Vector2i) -> GridEntity:
+	var entities: Array[GridEntity] = get_entities_at(coords)
+	for entity in entities:
+		if entity.is_hittable: return entity
+	return null

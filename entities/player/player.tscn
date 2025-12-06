@@ -14,10 +14,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("sprite")]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("sprite") groups=["player"]]
 scale = Vector2(3, 3)
 script = ExtResource("1_rkbax")
 sprite = NodePath("AnimatedSprite2D")
+faction = 0
+max_hp = 5
 is_hittable = true
 occupies_tile = true
 

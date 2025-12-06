@@ -1,9 +1,11 @@
 extends Node2D
 
-@onready var song_time_label: Label = $VBoxContainer/SongTimeLabel
-@onready var label: Label = $VBoxContainer/Label
+@onready var song_time_label: Label = $debug/HBoxContainer/VBoxContainer/SongTimeLabel
+@onready var label: Label = $debug/HBoxContainer/VBoxContainer/Label
+@onready var error_label: Label = $debug/HBoxContainer/VBoxContainer/ErrorLabel
 @onready var color_rect: ColorRect = $ColorRect
-@onready var error_label: Label = $VBoxContainer/ErrorLabel
+@onready var player_hp: Label = $debug/HBoxContainer/VBoxContainer2/PlayerHP
+@onready var player: Player = $Player
 
 const GRAY = Color.DIM_GRAY
 const GREEN = Color.DARK_GREEN
@@ -12,6 +14,7 @@ const RED = Color.DARK_RED
 func _ready() -> void:
 	Conductor.beat_hit.connect(_on_beat_hit)
 	InputJudge.action_judged.connect(_on_action_judged)
+	player_hp.text = "PlayerHP = %d/%d" % [ player.current_hp, player.max_hp ]
 	
 	color_rect.color = Color(GRAY, 0)
 	
@@ -24,6 +27,8 @@ func _process(delta: float) -> void:
 
 func _on_beat_hit(beat: Conductor.BeatInfo, measure_pos) -> void:
 	label.text = "turn time = %.3f\nlast_beat.pos = %d\nmeasure_pos = %d" % [ Conductor.song_time, beat.pos, measure_pos ]
+	await get_tree().create_timer(0.1).timeout
+	player_hp.text = "PlayerHP = %d/%d" % [ player.current_hp, player.max_hp ]
 
 func _on_action_judged(action: StringName, judgement: InputJudge.Judgment, error_ms: int) -> void:
 	if action == &"up" or action == &"down" or action == &"left" or action == &"right" or action == &"space":
