@@ -68,7 +68,7 @@ func _update_visuals() -> void:
 		
 	if sprite: # TODO: HARDCODED
 		if _state == State.ACTIVE:
-			sprite.scale = Vector2(2.0,2.0)
-		else:
 			sprite.scale = Vector2(3.5, 3.5)
+		else:
+			sprite.scale = Vector2(2.0, 2.0)
 		# Se tiver sprite idle, pode alternar aqui também

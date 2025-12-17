@@ -29,12 +29,9 @@ func unregister_entity(entity: GridEntity, coords: Vector2i) -> void:
 
 ## Returns an Array with all GridEntities on the tile (can be empty)
 func get_entities_at(coords: Vector2i) -> Array[GridEntity]:
-	var empty_array: Array[GridEntity] = []
-	#return _grid_entities.get(coords, empty_array)
-	if _grid_entities.has(coords):
-		return _grid_entities[coords]
-	else:
-		return empty_array
+	var entities: Array[GridEntity] = []
+	entities.assign(_grid_entities.get(coords, entities))
+	return entities
 
 
 ## Returns true if success, false otherwise
