@@ -26,11 +26,15 @@ func unregister_entity(entity: GridEntity, coords: Vector2i) -> void:
 		if _grid_entities[coords].is_empty():
 			_grid_entities.erase(coords)
 
-## Por questões de perfomance, a declaração do array foi movido pra fora do escopo da função
-const empty_array: Array[GridEntity] = []
+
 ## Returns an Array with all GridEntities on the tile (can be empty)
 func get_entities_at(coords: Vector2i) -> Array[GridEntity]:
-	return _grid_entities.get(coords, empty_array)
+	var empty_array: Array[GridEntity] = []
+	#return _grid_entities.get(coords, empty_array)
+	if _grid_entities.has(coords):
+		return _grid_entities[coords]
+	else:
+		return empty_array
 
 
 ## Returns true if success, false otherwise
